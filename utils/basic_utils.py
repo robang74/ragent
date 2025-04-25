@@ -61,7 +61,8 @@ def model_selector(model_type):
     elif model_type == OpenAISupportedClients.OLLAMA.value:
         try:
             from openai import OpenAI
-            client = OpenAI(base_url="http://127.0.0.1:11434/v1", api_key="noneed")
+            ollama_base_url = os.getenv("OLLAMA_API_ENDPOINT", "http://127.0.0.1:11434/v1")
+            client = OpenAI(base_url=ollama_base_url, api_key="noneed")
             model_list = client.models.list().data
             return [model.id for model in model_list]
         except Exception as e:
