@@ -38,7 +38,7 @@ import whisper
 import pyperclip
 import textwrap
 from streamlit_float import *
-from pkg_resources import parse_version
+from packaging.version import parse as parse_version
 
 
 language = os.getenv("LANGUAGE", "简体中文")
